@@ -1,5 +1,4 @@
-import { auth, signIn } from "@/auth";
-import { signOut } from "next-auth/react";
+import { auth, signIn, signOut } from "@/auth";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
