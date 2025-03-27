@@ -1,5 +1,5 @@
 import SearchForm from "@/components/SearchForm";
-import StartupCard from "@/components/StartupCard";
+import StartupCard, { StartupTypeCard } from "@/components/StartupCard";
 import React from "react";
 
 export default async function Home({
@@ -13,7 +13,7 @@ export default async function Home({
     {
       _createAt: new Date(),
       views: 55,
-      author: { _id: 1 },
+      author: { _id: 1, name: "YongMin Kim" },
       _id: 1,
       description: "This is a description",
       image:
@@ -42,7 +42,7 @@ export default async function Home({
 
         <ul className="mt-7 card_grid">
           {posts?.length > 0 ? (
-            posts.map((post: StartupCardType) => (
+            posts.map((post: StartupTypeCard) => (
               <StartupCard key={post?._id} post={post} />
             ))
           ) : (
