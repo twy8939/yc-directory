@@ -8,8 +8,8 @@ import { notFound } from "next/navigation";
 import React, { Suspense } from "react";
 
 import markdownit from "markdown-it";
-import Skeleton from "@/components/ui/skeleton";
 import View from "@/components/View";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const md = markdownit();
 
