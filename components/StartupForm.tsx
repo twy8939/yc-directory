@@ -10,6 +10,7 @@ import { formSchema } from "@/lib/vaildation";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/router";
+import { createPitch } from "@/lib/action";
 
 const StartupForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -29,6 +30,19 @@ const StartupForm = () => {
       };
 
       await formSchema.parseAsync(formValues);
+
+      const result = await createPitch(prevState, formData, pitch);
+
+      if (JSON.parse(result).status === "SUCCESS") {
+        toast({
+          title: "Success",
+          description: "Your startup pitch has been created successfully",
+        });
+      }
+
+      router.push(`/startups/${JSON.parse(result)._id}`);
+
+      return result;
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors = error.flatten().fieldErrors;
